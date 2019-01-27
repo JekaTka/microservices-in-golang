@@ -7,7 +7,8 @@ import (
 	// Import the generated protobuf code
 	pb "microservices-in-golang/consignment-service/proto/consignment"
 
-	"golang.org/x/net/context"
+	"context"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
