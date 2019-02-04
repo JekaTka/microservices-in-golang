@@ -5,8 +5,9 @@ import (
 	"log"
 
 	// Import the generated protobuf code
-	pb "microservices-in-golang/consignment-service/proto/consignment"
 	vesselProto "vessel-service/proto/vessel"
+
+	pb "github.com/JekaTka/microservices-in-golang/consignment-service/proto/consignment"
 
 	micro "github.com/micro/go-micro"
 

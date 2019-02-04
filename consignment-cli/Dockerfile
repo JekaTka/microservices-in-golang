@@ -1,6 +1,6 @@
 FROM golang:latest as builder
 
-WORKDIR /go/src/microservices-in-golang/consignment-cli
+WORKDIR /go/src/github.com/JekaTka/microservices-in-golang/consignment-cli
 
 COPY . .
 
@@ -17,6 +17,6 @@ RUN mkdir -p /app
 WORKDIR /app
 
 ADD consignment.json /app/consignment.json
-COPY --from=builder /go/src/microservices-in-golang/consignment-cli/consignment-cli .
+COPY --from=builder /go/src/github.com/JekaTka/microservices-in-golang/consignment-cli/consignment-cli .
 
 CMD ["./consignment-cli"]
