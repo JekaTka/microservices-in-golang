@@ -6,6 +6,8 @@ COPY . .
 
 RUN go get -u github.com/golang/dep/cmd/dep
 RUN dep init && dep ensure
+RUN go version
+RUN ls -la ./vendor/github.com/golang/protobuf
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo .
 
 
