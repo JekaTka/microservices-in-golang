@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	pb "github.com/EwanValentine/shippy/consignment-service/proto/consignment"
-	vesselProto "github.com/EwanValentine/shippy/vessel-service/proto/vessel"
+	pb "github.com/JekaTka/microservices-in-golang/consignment-service/proto/consignment"
+	vesselProto "github.com/JekaTka/microservices-in-golang/vessel-service/proto/vessel"
 	"golang.org/x/net/context"
 )
 
