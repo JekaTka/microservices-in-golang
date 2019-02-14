@@ -5,8 +5,8 @@ WORKDIR /go/src/github.com/JekaTka/microservices-in-golang/consignment-cli
 COPY . .
 
 RUN go get -u github.com/golang/dep/cmd/dep
-RUN go get -u github.com/micro/protobuf/proto
-RUN go get -u github.com/micro/protobuf/protoc-gen-go
+# RUN go get -u github.com/micro/protobuf/proto
+# RUN go get -u github.com/micro/protobuf/protoc-gen-go
 RUN dep ensure -update
 # RUN go version
 # RUN ls -la
