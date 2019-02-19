@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	pb "github.com/EwanValentine/shippy/user-service/proto/user"
+	pb "github.com/JekaTka/microservices-in-golang/user-service/proto/user"
 	"github.com/micro/cli"
 	"github.com/micro/go-micro"
 	microclient "github.com/micro/go-micro/client"
@@ -19,7 +19,6 @@ func main() {
 	// Create new greeter client
 	client := pb.NewUserServiceClient("go.micro.srv.user", microclient.DefaultClient)
 
-	// Define our flags
 	service := micro.NewService(
 		micro.Flags(
 			cli.StringFlag{
@@ -41,7 +40,6 @@ func main() {
 		),
 	)
 
-	// Start as service
 	service.Init(
 
 		micro.Action(func(c *cli.Context) {
@@ -51,7 +49,6 @@ func main() {
 			password := c.String("password")
 			company := c.String("company")
 
-			// Call our user service
 			r, err := client.Create(context.TODO(), &pb.User{
 				Name:     name,
 				Email:    email,
@@ -61,7 +58,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Could not create: %v", err)
 			}
-			log.Printf("Created: %s", r.User.Id)
+			log.Printf("Created: %t", r.User.Id)
 
 			getAll, err := client.GetAll(context.Background(), &pb.Request{})
 			if err != nil {
@@ -71,6 +68,7 @@ func main() {
 				log.Println(v)
 			}
 
+			// let's just exit because
 			os.Exit(0)
 		}),
 	)
