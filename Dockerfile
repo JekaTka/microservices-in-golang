@@ -1,6 +1,6 @@
 FROM golang:latest as builder
 
-WORKDIR /go/src/github.com/JekaTka/microservices-in-golang/consignment-service
+WORKDIR /go/src/github.com/JekaTka/shippy-consignment-service
 COPY . .
 
 RUN go get -u github.com/golang/dep/cmd/dep
@@ -14,7 +14,7 @@ RUN apk --no-cache add ca-certificates
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=builder /go/src/github.com/JekaTka/microservices-in-golang/consignment-service .
+COPY --from=builder /go/src/github.com/JekaTka/shippy-consignment-service .
 
 
 CMD ["./consignment-service"]

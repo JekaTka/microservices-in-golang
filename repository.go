@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "github.com/JekaTka/microservices-in-golang/consignment-service/proto/consignment"
+	pb "github.com/JekaTka/shippy-consignment-service/proto/consignment"
 	"gopkg.in/mgo.v2"
 )
 
