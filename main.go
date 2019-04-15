@@ -50,13 +50,12 @@ func main() {
 	srv := micro.NewService(
 
 		// This name must match the package name given in your protobuf definition
-		micro.Name("go.micro.srv.consignment"),
-		micro.Version("latest"),
+		micro.Name("shippy.consignment"),
 		// Our auth middleware
 		micro.WrapHandler(AuthWrapper),
 	)
 
-	vesselClient := vesselProto.NewVesselServiceClient("go.micro.srv.vessel", srv.Client())
+	vesselClient := vesselProto.NewVesselServiceClient("shippy.vessel", srv.Client())
 
 	// Init will parse the command line flags.
 	srv.Init()
