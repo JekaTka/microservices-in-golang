@@ -21,7 +21,7 @@ import (
 )
 
 const (
-	defaultHost = "localhost:27017"
+	defaultHost = "0.0.0.0:27017"
 )
 
 func main() {
@@ -65,6 +65,7 @@ func main() {
 
 	// Run the server
 	if err := srv.Run(); err != nil {
+		log.Println("Some error found:", err)
 		fmt.Println(err)
 	}
 }
@@ -87,14 +88,16 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 		log.Println("Authenticating with token: ", token)
 
 		// Auth here
-		authClient := userService.NewAuthClient("go.micro.srv.user", client.DefaultClient)
+		authClient := userService.NewAuthClient("shippy.auth", client.DefaultClient)
 		_, err := authClient.ValidateToken(context.Background(), &userService.Token{
 			Token: token,
 		})
 		if err != nil {
+			log.Println("Some error here")
 			return err
 		}
 		err = fn(ctx, req, resp)
+		log.Println("Err", err)
 		return err
 	}
 }
