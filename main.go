@@ -55,10 +55,13 @@ func main() {
 		micro.WrapHandler(AuthWrapper),
 	)
 
+	fmt.Println("Connect to vessel")
 	vesselClient := vesselProto.NewVesselServiceClient("shippy.vessel", srv.Client())
 
 	// Init will parse the command line flags.
 	srv.Init()
+
+	fmt.Println("Register shipping service handler")
 
 	// Register handler
 	pb.RegisterShippingServiceHandler(srv.Server(), &service{session, vesselClient})
